@@ -1,0 +1,34 @@
+//set集合调用add方法时，会调用hashcode方法和equals方法判断元素是否重复
+//所以确定不会重复，重写了hashcode和equals方法，保证不重复
+Collections.addAll(list,"a","b","c")
+shuffle 打乱集合顺序
+Collections.sort(list01);
+compareTo比较的规则
+
+redies 1、数据之间没有关联关系2、数据存储在内存中      高性能的非关系型数据库
+
+缓存思想
+1、有数据
+1.直接返回
+2、没有数据
+1.从数据库中查询，
+2.将数据放入缓存
+3.返回数据
+
+命令操作:
+redis 的数据结构
+key  value 格式的数据 ，其中key是字符串，value有5种不同的数据结构
+value
+
+string
+hash
+set
+list
+sortedset
+
+
+
+
+
+
+
