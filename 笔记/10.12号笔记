@@ -46,6 +46,52 @@ sortedset 可以排序的集合，不允许重复，自然去排顺序
      lpop key 从列表的最左面删除一个元素，并将元素返回
      rpop key 删除列表最右边的元素，并将元素返回
 
+     集合类型set 不允许有重复的元素
+     1.储存 sadd key value
+     2.获取 smembers key 获取set集合中的所有的元素
+     3.删除 srem key value 删除set集合中的某个元素
+
+     有序集合sortedset
+     1.存储  zadd key score value
+     2.获取  zrange key start end
+     3.删除 zren key value
+
+     通用的命令
+     keys * 查询所有的键
+     get username 拿到值
+     type ueername 类型
+     del key 删除指定的key  value
+
+     持久化
+     1.redis 是一个内存数据库 当服务器重启，或者电脑重启，数据会丢失，我们可以将redis内存中的数据持久化
+     2.redis持久化机制，
+     1,RDB:默认方式，不需要进行配置，就使用这种机制，在一定的间隔时间中，检测key的变化情况，持久化数据
+       1.编辑redis.windows.conf文件
+
+
+     2,AOF:日志记录的方式，可以记录每一条命令的操作，可以每一次命令操作后持久化数据
+       1.编辑redis.windows.conf文件
+
+
+
+      jedis  类似jdbc
+      使用步骤，
+      下载jar包
+      使用简单的api
+
+      比jdbc还要简单
+
+
+
+
+
+
+
+
+
+
+
+     4、持久化
 
 
 
