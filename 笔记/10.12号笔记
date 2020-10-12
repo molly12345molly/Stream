@@ -21,10 +21,35 @@ key  value 格式的数据 ，其中key是字符串，value有5种不同的数�
 value
 
 string
-hash
-set
-list
-sortedset
+hash  map的格式，
+set   hashset格式
+list  linkedlist格式
+sortedset 可以排序的集合，不允许重复，自然去排顺序
+
+命令的方式操作：
+存储  set key value
+     get key
+     del key
+哈希类型
+     hash
+     hset key field value 存储
+     hget key field  获取
+     hdel key field  删除
+     hgetall  ----  获取全部的值
+列表类型
+     list :可以添加一个元素到列表的头部和尾部
+     lpush key value 将元素加入列表左表
+     rpush key value 将元素加入列表右边
+     2.获取
+     lrange key start end 范围获取
+     3.删除
+     lpop key 从列表的最左面删除一个元素，并将元素返回
+     rpop key 删除列表最右边的元素，并将元素返回
+
+
+
+
+
 
 
 
