@@ -2,3 +2,68 @@ CREATE PROCEDURE `yiibaidb`.`GetAllProducts`()
 BEGIN
     SELECT * FROM yiibaidb.products;
 END
+
+
+-- 声明一个变量
+DECLARE variable_name datatype(size) DEFAULT default_value;
+DECLARE total_sale INT DEFAULT 0;
+
+use yiibaidb;
+DROP procedure if exists getofficeByContry;
+-- 存储过程
+-- IN - 是默认模式。在存储过程中定义IN参数时，调用程序必须将参数传递给存储过程。
+-- 另外，IN参数的值被保护。这意味着即使在存储过程中更改了IN参数的值，
+-- 在存储过程结束后仍保留其原始值。换句话说，存储过程只使用IN参数的副本
+
+-- OUT - 可以在存储过程中更改OUT参数的值，并将其更改后新值传递回调用程序。
+-- 请注意，存储过程在启动时无法访问OUT参数的初始值。
+
+-- INOUT - INOUT参数是IN和OUT参数的组合。这意味着调用程序可以传递参数，
+-- 并且存储过程可以修改INOUT参数并将新值传递回调用程序。
+
+
+DELIMITER $$
+use yiibaidb$$
+create procedure getofficeByContry(IN countryName VARBINARY(255))
+BEGIN
+    select * from offices where country=countryName;
+end $$
+DELIMITER ;
+
+call getofficeByContry('USA');
+
+-- 尝试使用存储过程中的in 及inout
+use yiibaidb;
+drop procedure if exists CountOrderByStatus;
+
+DELIMITER $$
+create procedure CountOrderByStatus(
+IN orderStatus VARCHAR(25),
+OUT total INT
+)
+BEGIN
+    select  count(orderNumber) INTO total from orders where status=orderStatus;
+end $$
+DELIMITER ;
+
+call CountOrderByStatus('Shipped',@total);
+select @total;
+
+-- inout参数实例
+-- set_counter存储过程接受一个INOUT参数(count)和一个IN参数(inc)。
+-- 在存储过程中，通过inc参数的值增加计数器(count)。//原文出自【易百教程】，商业转载请联系作者获得授权，非商业请保留原文链接：https://www.yiibai.com/mysql/stored-procedures-parameters.html
+
+
+
+DELIMITER $$
+create procedure  set_counter(INOUT  count INT(4),IN inc INT(4))
+BEGIN
+    set count=count+inc;
+end $$
+DELIMITER ;
+
+set @counter=1;
+CALL set_counter(@counter,1);-- 2
+CALL set_counter(@counter,1);-- 3
+CALL set_counter(@counter,5);-- 8
+select @counter;-- 8
