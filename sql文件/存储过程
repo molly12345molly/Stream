@@ -1,0 +1,4 @@
+CREATE PROCEDURE `yiibaidb`.`GetAllProducts`()
+BEGIN
+    SELECT * FROM yiibaidb.products;
+END

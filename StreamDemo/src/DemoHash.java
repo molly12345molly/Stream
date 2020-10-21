@@ -13,7 +13,7 @@ public class DemoHash {
         set.add("重地");
         set.add("通话");
         System.out.println(set);
-//set集合调用add方法时，会调用hashcode方法和equals方法判断元素是否重复
+//s集et合调用add方法时，会调用hashcode方法和equals方法判断元素是否重复
         //所以确定不会重复
 
 
